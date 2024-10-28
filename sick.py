@@ -3,12 +3,13 @@ from blinkable import Blinkable
 from smiley import Smiley
 
 
-class Happy(Smiley, Blinkable):
+class Sick(Smiley, Blinkable):
     """
    Provides a Smiley with a happy expression
     """
+
     def __init__(self):
-        super().__init__()
+        super().__init__(complexion=self.GREEN)
 
         self.draw_mouth()
         self.draw_eyes()
@@ -17,16 +18,16 @@ class Happy(Smiley, Blinkable):
         """
        Renders a mouth by blanking the pixels that form that object.
         """
-        mouth = [41, 46, 50, 51, 52, 53]
+        mouth = [42, 43, 44, 45, 51, 52]
         for pixel in mouth:
             self.pixels[pixel] = self.BLANK
 
     def draw_eyes(self, wide_open=True):
         """
-       Draws the eyes (open or closed) on the standard smiley.
+        Draws the eyes (open or closed) on the standard smiley.
         :param wide_open (bool): eyes open or closed.
         """
-        eyes = [10, 13, 18, 21]
+        eyes = [10, 17, 18, 13, 22, 21]
         for pixel in eyes:
             self.pixels[pixel] = self.BLANK if wide_open else self.complexion()
 
